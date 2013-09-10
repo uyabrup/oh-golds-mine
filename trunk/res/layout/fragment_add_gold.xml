@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+        android:layout_width="fill_parent"  
+        android:orientation="vertical"  
+        android:layout_height="wrap_content">  
+	    <LinearLayout  
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"  
+	        android:orientation="vertical" >  
+	    	<!--Put form controls here-->
+
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content" >
+
+	            <TextView
+	                android:id="@+id/textView4"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="center"
+	                android:text="@string/type_gold"
+	                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+	            <Spinner
+	                android:id="@+id/select_type_gold"
+	                android:layout_width="0dip"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1" />
+
+	        </LinearLayout>
+	
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_marginBottom="10dp"
+	            android:weightSum="10" >
+	
+	            <TextView
+	                android:id="@+id/edit_id"
+	                android:layout_width="0dp"
+	                android:layout_height="0dp"
+	                android:layout_weight="0"
+	                android:visibility="visible" />
+	
+	            <TextView
+	                android:id="@+id/textView1"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="center"
+	                android:text="@string/tael"
+	                android:textAppearance="?android:attr/textAppearanceMedium" />
+	
+	            <Spinner
+	                android:id="@+id/select_tael"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="5" />
+	
+	            <TextView
+	                android:id="@+id/textView2"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="center"
+	                android:text="@string/small_tael"
+	                android:textAppearance="?android:attr/textAppearanceMedium" />
+	            
+	            <Spinner
+	                android:id="@+id/select_small_tael"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="5" />
+	
+	        </LinearLayout>  
+	    	    <EditText  
+			      android:hint="@string/form_hint_price"
+			      android:id="@+id/edit_price"
+			      android:layout_width="fill_parent"
+			      android:layout_height="wrap_content"
+			      android:layout_marginBottom="10dp"
+			      android:inputType="numberSigned">  
+			  	</EditText>
+	
+	    	    <LinearLayout
+	    	        android:layout_width="match_parent"
+	    	        android:layout_height="wrap_content"
+	    	        android:layout_marginBottom="10dp"
+	    	        android:weightSum="10" >
+	
+	    	        <EditText
+	    	            android:id="@+id/edit_date"
+	    	            android:layout_width="wrap_content"
+	    	            android:layout_height="wrap_content"
+	    	            android:layout_weight="7"
+	    	            android:ems="8"
+	    	            android:editable="false"
+	    	            android:hint="@string/form_hint_date" >
+	    	        </EditText>
+	
+	    	        <Button
+	    	            android:id="@+id/btt_calendar"
+	    	            android:layout_width="wrap_content"
+	    	            android:layout_height="wrap_content"
+	    	            android:layout_weight="3"
+	    	            android:text="@string/button_calendar" />
+	
+	    	    </LinearLayout>
+	
+			  	<LinearLayout
+			  	    android:layout_width="match_parent"
+			  	    android:layout_height="wrap_content"
+			  	    android:weightSum="2" >
+	
+			  		<Button
+			  		    android:id="@+id/btt_add"
+			  		    android:layout_width="fill_parent"
+			  		    android:layout_height="wrap_content"
+			  		    android:layout_weight="1"
+			  		    android:text="@string/button_add" />
+	
+			  		<Button
+			  		    android:id="@+id/btt_cancel"
+			  		    android:layout_width="fill_parent"
+			  		    android:layout_height="wrap_content"
+			  		    android:layout_weight="1"
+			  		    android:text="@string/button_cancel" />
+	
+			  	</LinearLayout>
+	    </LinearLayout>  
+</LinearLayout>
