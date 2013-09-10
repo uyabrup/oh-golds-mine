@@ -25,6 +25,7 @@
 	<!-- Title Dialog -->
 	<string name="title_delete">Delete</string>
 	<string name="title_error">An Error Occurred</string>
+	<string name="title_exit">Exit</string>
 	
 	<!-- Message -->
 	<string name="message_exit">Do you want exit?</string>
@@ -52,7 +53,7 @@
 	
 	<!-- Menu Section String -->
 	<string name="section_gold">Gold</string>
-	<string name="section_money">Money</string>
+	<string name="section_dashboard">Dashboard</string>
 	<string name="section_configuration">Configuration</string>
 	
 	<!-- Menu Item String -->
@@ -61,10 +62,8 @@
 	<string name="statistics_gold">Statistics Gold</string>
 	<string name="chart_gold">Chart Gold</string>
 	
-	<string name="add_money">Add Money</string>
-	<string name="list_money">List Money</string>
-	<string name="statistics_money">Statistics Money</string>
-	<string name="chart_money">Chart Money</string>
+	<string name="update_gold">Synchronize Gold</string>
+	<string name="update_currency">Synchronize Currency</string>
 	
 	<string name="setting">Setting</string>
 	<string name="information">Information</string>
@@ -73,17 +72,9 @@
 	<!-- Menu Grid Home -->
 	<string-array name="menu_home_text">
 	    <item>@string/add_gold</item>
-	    <item>@string/add_money</item>
-	    
 	    <item>@string/list_gold</item>
-	    <item>@string/list_money</item>
-	    
 	    <item>@string/statistics_gold</item>
-	    <item>@string/statistics_money</item>
-	    
 	    <item>@string/chart_gold</item>
-	    <item>@string/chart_money</item>
-	    
 	    <item>@string/setting</item>
 	    <item>@string/exit</item>
 	</string-array>
@@ -93,11 +84,8 @@
 	    <item>vn.luis.goldsmine.golduser.ListGoldUserFragment</item> <!-- List Gold -->
 	    <item>vn.luis.goldsmine.golduser.StatisticsGoldUserFragment</item> <!-- Statistics Gold -->
 	    <item>vn.luis.goldsmine.golduser.ChartGoldUserFragment</item> <!-- Chart Gold -->
-	    <item>vn.luis.goldsmine.money.AddMoneyFragment</item> <!-- Add Money -->
-	    <item>vn.luis.goldsmine.money.ListMoneyFragment</item> <!-- List Money -->
-	    <item>vn.luis.goldsmine.money.StatisticsMoneyFragment</item> <!-- Statistics Money -->
-	    <item>vn.luis.goldsmine.money.ChartMoneyFragment</item> <!-- Chart Money -->
 	    <item>vn.luis.goldsmine.configuration.SettingFragment</item> <!-- Setting -->
+	    <item>vn.luis.goldsmine.configuration.InformationFragment</item> <!-- Information -->
 	</string-array>
 	
 	<!-- Sort List Gold User-->
