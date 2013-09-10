@@ -32,26 +32,28 @@ public class SQLite extends SQLiteOpenHelper {
 			COLUMN_GOLD_USER_DATE + " DATE)";
 	
 	/* Table Currency System */
-	private static final String TABLE_CURRENCY = "currency";
-	private static final String COLUMN_CURRENCY_ID = "id";
-	private static final String COLUMN_CURRENCY_NAME = "name";
-	private static final String COLUMN_CURRENCY_CODE = "code";
-	private static final String COLUMN_CURRENCY_PRICE = "price";
-	private static final String CREATE_TABLE_CURRENCY = "CREATE TABLE " + TABLE_CURRENCY + " (" +
-			COLUMN_CURRENCY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-			COLUMN_CURRENCY_NAME + " TEXT NOT NULL," +
-			COLUMN_CURRENCY_CODE + " TEXT NOT NULL," +
-			COLUMN_CURRENCY_PRICE + " NUMERIC NOT NULL)";
+	private static final String TABLE_CURRENCY_SYSTEM = "currency_system";
+	private static final String COLUMN_CURRENCY_SYSTEM_ID = "id";
+	private static final String COLUMN_CURRENCY_SYSTEM_NAME = "name";
+	private static final String COLUMN_CURRENCY_SYSTEM_CODE = "code";
+	private static final String COLUMN_CURRENCY_SYSTEM_PRICE = "price";
+	private static final String CREATE_TABLE_CURRENCY_SYSTEM = "CREATE TABLE " + TABLE_CURRENCY_SYSTEM + " (" +
+			COLUMN_CURRENCY_SYSTEM_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+			COLUMN_CURRENCY_SYSTEM_NAME + " TEXT NOT NULL," +
+			COLUMN_CURRENCY_SYSTEM_CODE + " TEXT NOT NULL," +
+			COLUMN_CURRENCY_SYSTEM_PRICE + " NUMERIC NOT NULL)";
 	
 	/* Table Gold System*/
-	private static final String TABLE_GOLD = "gold";
-	private static final String COLUMN_GOLD_BUY = "buy";
-	private static final String COLUMN_GOLD_SELL = "sell";
-	private static final String COLUMN_GOLD_DATE = "date";
-	private static final String CREATE_TABLE_GOLD = "CREATE TABLE " + TABLE_GOLD + " (" +
-			COLUMN_GOLD_BUY + " NUMERIC NOT NULL," +
-			COLUMN_GOLD_SELL + " NUMERIC NOT NULL," +
-			COLUMN_GOLD_DATE + " TEXT NOT NULL)";
+	private static final String TABLE_GOLD_SYSTEM = "gold_system";
+	private static final String COLUMN_GOLD_SYSTEM_TYPE = "type";
+	private static final String COLUMN_GOLD_SYSTEM_BUY = "buy";
+	private static final String COLUMN_GOLD_SYSTEM_SELL = "sell";
+	private static final String COLUMN_GOLD_SYSTEM_DATE = "date";
+	private static final String CREATE_TABLE_GOLD_SYSTEM = "CREATE TABLE " + TABLE_GOLD_SYSTEM + " (" +
+			COLUMN_GOLD_SYSTEM_TYPE + " TEXT NOT NULL," +
+			COLUMN_GOLD_SYSTEM_BUY + " NUMERIC NOT NULL," +
+			COLUMN_GOLD_SYSTEM_SELL + " NUMERIC NOT NULL," +
+			COLUMN_GOLD_SYSTEM_DATE + " TEXT NOT NULL)";
 	
 	/* Table Setting */
 	private static final String TABLE_SETTING = "setting";
@@ -86,8 +88,8 @@ public class SQLite extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		// TODO Auto-generated method stub
 		db.execSQL(CREATE_TABLE_GOLD_USER);
-		db.execSQL(CREATE_TABLE_CURRENCY);
-		db.execSQL(CREATE_TABLE_GOLD);
+		db.execSQL(CREATE_TABLE_CURRENCY_SYSTEM);
+		db.execSQL(CREATE_TABLE_GOLD_SYSTEM);
 		db.execSQL(CREATE_TABLE_SETTING);
 	}
 
@@ -95,8 +97,8 @@ public class SQLite extends SQLiteOpenHelper {
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) { // Khi update lên phiên bản mới thì drop table và tạo lại
 		// TODO Auto-generated method stub
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_GOLD_USER);
-		db.execSQL("DROP TABLE IF EXISTS " + TABLE_CURRENCY);
-		db.execSQL("DROP TABLE IF EXISTS " + TABLE_GOLD);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_CURRENCY_SYSTEM);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_GOLD_SYSTEM);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_SETTING);
 		onCreate(db);
 	}
@@ -198,28 +200,34 @@ public class SQLite extends SQLiteOpenHelper {
 		db.close();
 	}
 	
-	/* COLUMN CURRENCY */
+	/* COLUMN CURRENCY SYSTEM */
+	
+	public int count_currency_system(){
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_CURRENCY_SYSTEM,null);
+		return cursor.getCount();
+	}
 	
 	public void empty_currency(){ // Insert data vào database
 		SQLiteDatabase db = this.getWritableDatabase();
-		db.execSQL("DELETE FROM " + TABLE_CURRENCY);
+		db.execSQL("DELETE FROM " + TABLE_CURRENCY_SYSTEM);
 		db.close();
 	}
 	
 	public void insert_currency(ItemCurrencySystem currency){ // Insert data vào database
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues values = new ContentValues();
-		values.put(COLUMN_CURRENCY_NAME, currency.getName());
-		values.put(COLUMN_CURRENCY_CODE, currency.getCode());
-		values.put(COLUMN_CURRENCY_PRICE, currency.getPrice());		
-		db.insert(TABLE_CURRENCY, null, values);
+		values.put(COLUMN_CURRENCY_SYSTEM_NAME, currency.getName());
+		values.put(COLUMN_CURRENCY_SYSTEM_CODE, currency.getCode());
+		values.put(COLUMN_CURRENCY_SYSTEM_PRICE, currency.getPrice());		
+		db.insert(TABLE_CURRENCY_SYSTEM, null, values);
 		db.close();
 	}
 	
 	public List<ItemCurrencySystem> get_all_currency(){
 		List<ItemCurrencySystem> listcurrency = new ArrayList<ItemCurrencySystem>();
 		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_CURRENCY, null);
+		Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_CURRENCY_SYSTEM, null);
 		if(cursor != null){
 			if(cursor.moveToFirst()){
 				do{
@@ -238,7 +246,7 @@ public class SQLite extends SQLiteOpenHelper {
 	public List<String> get_all_name_currency(){
 		List<String> listcurrency = new ArrayList<String>();
 		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cursor = db.rawQuery("SELECT " + COLUMN_CURRENCY_NAME + " FROM " + TABLE_CURRENCY, null);
+		Cursor cursor = db.rawQuery("SELECT " + COLUMN_CURRENCY_SYSTEM_NAME + " FROM " + TABLE_CURRENCY_SYSTEM, null);
 		if(cursor != null){
 			if(cursor.moveToFirst()){
 				do{
@@ -253,7 +261,7 @@ public class SQLite extends SQLiteOpenHelper {
 	
 	public String getCodeByName(String name){
 		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cursor = db.rawQuery("SELECT " + COLUMN_CURRENCY_CODE + " FROM " + TABLE_CURRENCY + " WHERE " + COLUMN_CURRENCY_NAME +" = '" + name + "'",null);
+		Cursor cursor = db.rawQuery("SELECT " + COLUMN_CURRENCY_SYSTEM_CODE + " FROM " + TABLE_CURRENCY_SYSTEM + " WHERE " + COLUMN_CURRENCY_SYSTEM_NAME +" = '" + name + "'",null);
 		if(cursor != null){
 			cursor.moveToFirst();
 		}
@@ -262,39 +270,46 @@ public class SQLite extends SQLiteOpenHelper {
 	
 	public String getPriceByName(String name){
 		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cursor = db.rawQuery("SELECT " + COLUMN_CURRENCY_PRICE + " FROM " + TABLE_CURRENCY + " WHERE " + COLUMN_CURRENCY_NAME +" = '" + name  + "'",null);
+		Cursor cursor = db.rawQuery("SELECT " + COLUMN_CURRENCY_SYSTEM_PRICE + " FROM " + TABLE_CURRENCY_SYSTEM + " WHERE " + COLUMN_CURRENCY_SYSTEM_NAME +" = '" + name  + "'",null);
 		if(cursor != null){
 			cursor.moveToFirst();
 		}
 		return cursor.getString(0);
 	}
 	
-	/* COLUMN GOLD */
+	/* COLUMN GOLD SYSTEM */
+	
+	public int count_gold_system(){
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_GOLD_SYSTEM,null);
+		return cursor.getCount();
+	}
 	
 	public void empty_gold(){ // Insert data vào database
 		SQLiteDatabase db = this.getWritableDatabase();
-		db.execSQL("DELETE FROM " + TABLE_GOLD);
+		db.execSQL("DELETE FROM " + TABLE_GOLD_SYSTEM);
 		db.close();
 	}
 	
-	public void insert_gold(ItemGoldSystem gold2){ // Insert data vào database
+	public void insert_gold(ItemGoldSystem itemGoldSystem){ // Insert data vào database
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues values = new ContentValues();
-		values.put(COLUMN_GOLD_BUY, gold2.getBuy());
-		values.put(COLUMN_GOLD_SELL, gold2.getSell());
-		values.put(COLUMN_GOLD_DATE, gold2.getDate());		
-		db.insert(TABLE_GOLD, null, values);
+		values.put(COLUMN_GOLD_SYSTEM_TYPE, itemGoldSystem.getType());
+		values.put(COLUMN_GOLD_SYSTEM_BUY, itemGoldSystem.getBuy());
+		values.put(COLUMN_GOLD_SYSTEM_SELL, itemGoldSystem.getSell());
+		values.put(COLUMN_GOLD_SYSTEM_DATE, itemGoldSystem.getDate());		
+		db.insert(TABLE_GOLD_SYSTEM, null, values);
 		db.close();
 	}
 	
 	public ItemGoldSystem get_gold(){
 		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_GOLD,null);
+		Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_GOLD_SYSTEM,null);
 		if(cursor != null){
 			cursor.moveToFirst();
 		}
-		ItemGoldSystem gold2 = new ItemGoldSystem(Double.parseDouble(cursor.getString(0)), Double.parseDouble(cursor.getString(1)), cursor.getString(2));
-		return gold2;
+		ItemGoldSystem itemGoldSystem = new ItemGoldSystem(cursor.getString(0),Double.parseDouble(cursor.getString(1)), Double.parseDouble(cursor.getString(2)), cursor.getString(3));
+		return itemGoldSystem;
 	}
 	
 	/* TABLE SETTING */

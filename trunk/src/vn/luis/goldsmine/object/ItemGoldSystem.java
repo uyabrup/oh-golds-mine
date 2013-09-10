@@ -1,9 +1,16 @@
 package vn.luis.goldsmine.object;
 
 public class ItemGoldSystem {
+	private String type;
 	private Double buy;
 	private Double sell;
 	private String date;
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
 	public Double getBuy() {
 		return buy;
 	}
@@ -22,8 +29,9 @@ public class ItemGoldSystem {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public ItemGoldSystem(Double buy, Double sell, String date) {
+	public ItemGoldSystem(String type, Double buy, Double sell, String date) {
 		super();
+		this.type = type;
 		this.buy = buy;
 		this.sell = sell;
 		this.date = date;

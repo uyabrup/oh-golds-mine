@@ -6,8 +6,9 @@ import java.util.List;
 
 import vn.luis.goldsmine.R;
 import vn.luis.goldsmine.database.SQLite;
-import vn.luis.goldsmine.function.Function;
 import vn.luis.goldsmine.object.ItemGoldUser;
+import vn.luis.goldsmine.util.DialogUtil;
+import vn.luis.goldsmine.util.Function;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -92,17 +93,17 @@ public class AddGoldUserFragment extends Fragment {
 	        	int total_tael = tael + small_tael;
 	        	if((tael + small_tael) == 0){	        		
 	        		MESSAGE = getResources().getString(R.string.message_error_empty_tael); 
-	        		Function.messageAlert(getActivity(), TITLE, MESSAGE);
+	        		DialogUtil.messageAlert(getActivity(), TITLE, MESSAGE, 0);
 	        	}else{
 	        		String price_string = edit_price.getText().toString();
 	        		String date = edit_date.getText().toString();
 	        		if(price_string.matches("")){
 		        		MESSAGE = getResources().getString(R.string.message_error_empty_price);
-		        		Function.messageAlert(getActivity(), TITLE, MESSAGE);
+		        		DialogUtil.messageAlert(getActivity(), TITLE, MESSAGE, 0);
 	        		}else{
 	        			if(date.matches("")){
 	        				MESSAGE = getResources().getString(R.string.message_error_empty_date);
-	        				Function.messageAlert(getActivity(), TITLE, MESSAGE);
+	        				DialogUtil.messageAlert(getActivity(), TITLE, MESSAGE, 0);
 	        			}else{
 	        				Double price = Double.parseDouble(price_string);
 	        				db.insert_list(new ItemGoldUser(type, total_tael, price, date));
