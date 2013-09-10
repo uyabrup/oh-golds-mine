@@ -28,7 +28,7 @@ public class CustomListGoldUserUser extends ArrayAdapter<ItemGoldUser> implement
 	int resource;
 	
 	static class GoldHolder{
-		public TextView txt_no, txt_type, txt_anumb, txt_price, txt_date;
+		public TextView txt_no, txt_type, txt_quantum, txt_price, txt_date;
 	}
 	
 	public CustomListGoldUserUser(Context context, int textViewResourceId,
@@ -52,7 +52,7 @@ public class CustomListGoldUserUser extends ArrayAdapter<ItemGoldUser> implement
 				holder = new GoldHolder();
 				holder.txt_no = (TextView)row.findViewById(R.id.txt_no);
 				holder.txt_type = (TextView)row.findViewById(R.id.txt_type);
-				holder.txt_anumb = (TextView)row.findViewById(R.id.txt_anumb);
+				holder.txt_quantum = (TextView)row.findViewById(R.id.txt_quantum);
 				holder.txt_date = (TextView)row.findViewById(R.id.txt_date);
 				holder.txt_price = (TextView)row.findViewById(R.id.txt_price);
 				row.setTag(holder);
@@ -63,7 +63,7 @@ public class CustomListGoldUserUser extends ArrayAdapter<ItemGoldUser> implement
 			Locale locale = Locale.US;
 			holder.txt_no.setText(String.valueOf(itemGoldUser.getId()));
 			holder.txt_type.setText(itemGoldUser.getType());
-			holder.txt_anumb.setText(String.valueOf(itemGoldUser.getAnumb()));
+			holder.txt_quantum.setText(String.valueOf(itemGoldUser.getAnumb()));
 			holder.txt_date.setText(itemGoldUser.getDate());
 			Double anumb = itemGoldUser.getPrice();
 //			Double from = Double.parseDouble(session.getDefaultPrice());
