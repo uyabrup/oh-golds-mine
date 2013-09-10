@@ -3,8 +3,8 @@ package vn.luis.goldsmine.menuhome;
 import java.util.ArrayList;
 
 import vn.luis.goldsmine.R;
-import vn.luis.goldsmine.function.Function;
 import vn.luis.goldsmine.object.ItemMenu;
+import vn.luis.goldsmine.util.Function;
 
 import android.app.Activity;
 import android.content.Context;

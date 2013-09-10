@@ -67,9 +67,8 @@ public final class R {
         public static final int warning=0x7f02001d;
     }
     public static final class id {
-        public static final int LinearLayout2=0x7f090018;
         public static final int RelativeLayout1=0x7f090017;
-        public static final int action_settings=0x7f090021;
+        public static final int action_settings=0x7f090020;
         public static final int btt_add=0x7f090011;
         public static final int btt_calendar=0x7f090010;
         public static final int btt_cancel=0x7f090012;
@@ -84,9 +83,9 @@ public final class R {
         public static final int item_text=0x7f090005;
         public static final int listViewGoldUser=0x7f090013;
         public static final int main=0x7f090001;
-        public static final int navmenuitem_icon=0x7f09001e;
-        public static final int navmenuitem_label=0x7f09001f;
-        public static final int navmenusection_label=0x7f090020;
+        public static final int navmenuitem_icon=0x7f09001d;
+        public static final int navmenuitem_label=0x7f09001e;
+        public static final int navmenusection_label=0x7f09001f;
         public static final int save_history=0x7f090016;
         public static final int select_small_tael=0x7f09000d;
         public static final int select_tael=0x7f09000b;
@@ -94,13 +93,13 @@ public final class R {
         public static final int textView1=0x7f09000a;
         public static final int textView2=0x7f09000c;
         public static final int textView4=0x7f090007;
-        public static final int txt_date=0x7f09001d;
-        public static final int txt_no=0x7f090019;
-        public static final int txt_price=0x7f09001c;
-        public static final int txt_quantum=0x7f09001a;
+        public static final int txt_anumb=0x7f090019;
+        public static final int txt_date=0x7f09001c;
+        public static final int txt_no=0x7f090018;
+        public static final int txt_price=0x7f09001b;
         public static final int txt_total=0x7f090015;
         public static final int txt_total_anumb=0x7f090014;
-        public static final int txt_type=0x7f09001b;
+        public static final int txt_type=0x7f09001a;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -128,56 +127,58 @@ public final class R {
         public static final int action_settings=0x7f050001;
         /**  Menu Item String 
          */
-        public static final int add_gold=0x7f050024;
+        public static final int add_gold=0x7f050025;
         public static final int app_name=0x7f050000;
         public static final int button_add=0x7f050009;
         public static final int button_calendar=0x7f05000a;
         /**  Button 
          */
         public static final int button_cancel=0x7f050008;
-        public static final int chart_gold=0x7f050027;
+        public static final int cancel=0x7f05001a;
+        public static final int chart_gold=0x7f050028;
         /**  Alert 
          */
-        public static final int close=0x7f05001a;
-        public static final int close_nav=0x7f05001e;
+        public static final int close=0x7f050019;
+        public static final int close_nav=0x7f05001f;
         public static final int description_grid_home=0x7f05000c;
         /**  Description 
          */
         public static final int description_logo=0x7f05000b;
         public static final int description_save_history=0x7f05000d;
-        public static final int exit=0x7f05002c;
+        public static final int exit=0x7f05002d;
         public static final int form_hint_date=0x7f050007;
         public static final int form_hint_price=0x7f050006;
         public static final int hello_world=0x7f050002;
-        public static final int information=0x7f05002b;
-        public static final int list_gold=0x7f050025;
-        public static final int message_ask_delete=0x7f050014;
-        public static final int message_delete_success=0x7f050015;
-        public static final int message_empty_first=0x7f050012;
-        public static final int message_empty_second=0x7f050013;
-        public static final int message_error_empty_date=0x7f050018;
-        public static final int message_error_empty_price=0x7f050017;
-        public static final int message_error_empty_tael=0x7f050016;
+        public static final int information=0x7f05002c;
+        public static final int list_gold=0x7f050026;
+        public static final int message_ask_delete=0x7f050013;
+        public static final int message_delete_success=0x7f050014;
+        public static final int message_empty_first=0x7f050011;
+        public static final int message_empty_second=0x7f050012;
+        public static final int message_error_empty_date=0x7f050017;
+        public static final int message_error_empty_price=0x7f050016;
+        public static final int message_error_empty_tael=0x7f050015;
         /**  Message 
          */
-        public static final int message_exit=0x7f050011;
-        public static final int message_insert_success=0x7f050019;
-        public static final int no=0x7f05001c;
+        public static final int message_exit=0x7f050010;
+        public static final int message_insert_success=0x7f050018;
+        public static final int no=0x7f05001d;
+        public static final int ok=0x7f05001b;
         /**  Navigation Draw 
          */
-        public static final int open_nav=0x7f05001d;
-        public static final int refesh=0x7f050020;
+        public static final int open_nav=0x7f05001e;
+        public static final int refesh=0x7f050021;
         public static final int section_configuration=0x7f050023;
-        public static final int section_dashboard=0x7f050022;
+        public static final int section_dashboard=0x7f050024;
         /**  Menu Section String 
          */
-        public static final int section_gold=0x7f050021;
-        public static final int setting=0x7f05002a;
+        public static final int section_gold=0x7f050022;
+        public static final int setting=0x7f05002b;
         public static final int small_tael=0x7f050004;
         /**  Menu Other 
          */
-        public static final int sort=0x7f05001f;
-        public static final int statistics_gold=0x7f050026;
+        public static final int sort=0x7f050020;
+        public static final int statistics_gold=0x7f050027;
         /**  Layout 
          */
         public static final int tael=0x7f050003;
@@ -185,11 +186,10 @@ public final class R {
          */
         public static final int title_delete=0x7f05000e;
         public static final int title_error=0x7f05000f;
-        public static final int title_exit=0x7f050010;
         public static final int type_gold=0x7f050005;
-        public static final int update_currency=0x7f050029;
-        public static final int update_gold=0x7f050028;
-        public static final int yes=0x7f05001b;
+        public static final int update_currency=0x7f05002a;
+        public static final int update_gold=0x7f050029;
+        public static final int yes=0x7f05001c;
     }
     public static final class style {
         /** 

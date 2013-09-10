@@ -25,7 +25,6 @@
 	<!-- Title Dialog -->
 	<string name="title_delete">Delete</string>
 	<string name="title_error">An Error Occurred</string>
-	<string name="title_exit">Exit</string>
 	
 	<!-- Message -->
 	<string name="message_exit">Do you want exit?</string>
@@ -40,6 +39,8 @@
 	
 	<!-- Alert -->
 	<string name="close">Close</string>
+	<string name="cancel">Cancel</string>
+	<string name="ok">OK</string>
 	<string name="yes">Yes</string>
 	<string name="no">No</string>
 	
@@ -53,18 +54,16 @@
 	
 	<!-- Menu Section String -->
 	<string name="section_gold">Gold</string>
-	<string name="section_dashboard">Dashboard</string>
 	<string name="section_configuration">Configuration</string>
+	<string name="section_dashboard">Dashboard</string>
 	
 	<!-- Menu Item String -->
 	<string name="add_gold">Add Gold</string>
 	<string name="list_gold">List Gold</string>
 	<string name="statistics_gold">Statistics Gold</string>
 	<string name="chart_gold">Chart Gold</string>
-	
 	<string name="update_gold">Synchronize Gold</string>
 	<string name="update_currency">Synchronize Currency</string>
-	
 	<string name="setting">Setting</string>
 	<string name="information">Information</string>
 	<string name="exit">Exit</string>
@@ -76,6 +75,7 @@
 	    <item>@string/statistics_gold</item>
 	    <item>@string/chart_gold</item>
 	    <item>@string/setting</item>
+	    <item>@string/information</item>
 	    <item>@string/exit</item>
 	</string-array>
 	

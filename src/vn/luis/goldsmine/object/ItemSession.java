@@ -3,10 +3,10 @@ package vn.luis.goldsmine.object;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.util.Log;
 
 public class ItemSession {
 	SharedPreferences sharedPreferences;
@@ -32,7 +32,6 @@ public class ItemSession {
 	public static final String GOLD_SYSTEM = "Gold System";
 	public static final String PRICE_NAME = "Price";
 	
-	@SuppressLint("CommitPrefEdits")
 	public ItemSession(Context context) {
 		this._context = context;
 		sharedPreferences = _context.getSharedPreferences(SESSION_NAME, PRIVATE_MODE);

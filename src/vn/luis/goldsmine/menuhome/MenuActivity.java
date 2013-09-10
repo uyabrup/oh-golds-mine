@@ -1,24 +1,22 @@
 package vn.luis.goldsmine.menuhome;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 import vn.luis.goldsmine.MainActivity;
 import vn.luis.goldsmine.R;
 import vn.luis.goldsmine.database.SQLite;
 import vn.luis.goldsmine.object.ItemMenu;
 import vn.luis.goldsmine.object.ItemSession;
-import vn.luis.goldsmine.object.ItemSetting;
+import vn.luis.goldsmine.synchronize.Synchronize_Currency;
+import vn.luis.goldsmine.synchronize.Synchronize_Gold;
+import vn.luis.goldsmine.util.DialogUtil;
+import vn.luis.goldsmine.util.NetworkUtil;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.DialogInterface.OnClickListener;
-import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.view.Menu;
@@ -41,21 +39,13 @@ public class MenuActivity extends Activity {
 		setContentView(R.layout.activity_menu);
 		resources = getResources();
 		alert = new AlertDialog.Builder(MenuActivity.this);
-		saveSession();
 		String[] name_menu = getResources().getStringArray(R.array.menu_home_text);
 		Drawable[] icon_menu = {
 			resources.getDrawable(R.drawable.add_gold),
-			resources.getDrawable(R.drawable.add_money),
-			
-			resources.getDrawable(R.drawable.add_gold),
-			resources.getDrawable(R.drawable.add_money),
-			
+			resources.getDrawable(R.drawable.gold),
 			resources.getDrawable(R.drawable.statistics_gold),
-			resources.getDrawable(R.drawable.statistics_money),
-			
 			resources.getDrawable(R.drawable.chart_gold),
-			resources.getDrawable(R.drawable.chart_money),
-			
+			resources.getDrawable(R.drawable.information),
 			resources.getDrawable(R.drawable.setting),
 			resources.getDrawable(R.drawable.log_out)
 		};
@@ -78,35 +68,52 @@ public class MenuActivity extends Activity {
 				// TODO Auto-generated method stub
 				if(position != last_menu){
 					Intent intent = new Intent(MenuActivity.this, MainActivity.class);
-					startActivityForResult(intent, 0);
 					intent.putExtra("position", position);
 	                startActivity(intent);
 				}else{
-					alert.setTitle(getResources().getString(R.string.exit));
-			    	alert.setIcon(getResources().getDrawable(R.drawable.log_out));
-			    	alert.setMessage(getResources().getString(R.string.message_exit));
-			    	alert.setCancelable(false);
-			    	alert.setPositiveButton(getResources().getString(R.string.yes), new OnClickListener() {
-						
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							// TODO Auto-generated method stub
-							MenuActivity.this.finish();
-						}
-					});
-			    	alert.setNegativeButton(getResources().getString(R.string.no), new OnClickListener() {
-						
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							// TODO Auto-generated method stub
-							dialog.cancel();
-						}
-					});
-			    	alert.create().show();
+					DialogUtil.confirmationAlert(MenuActivity.this, getResources().getString(R.string.exit), getResources().getString(R.string.message_exit), new DialogInterface.OnClickListener() {
+		                @Override
+		                public void onClick(DialogInterface dialogInterface, int i) {
+		                    // do something important, user confirmed the alert
+		                	MenuActivity.this.finish();
+		                }
+		            }, R.drawable.log_out);
 				}
 			}
 		});
 		
+		db = new SQLite(this);
+		int total_row_gold_system = db.count_gold_system();
+		int total_row_currency_system = db.count_currency_system();
+		
+		if(total_row_gold_system == 0 && total_row_currency_system == 0){
+			int check_internet = NetworkUtil.getConnectivityStatus(getApplicationContext());
+			if(check_internet != 0){
+				if(check_internet == 2){
+					DialogUtil.confirmationAlert(this, "Mobil Network", "AAA", new DialogInterface.OnClickListener() {
+						
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							// TODO Auto-generated method stub
+							controller_download();
+						}
+						
+					}, 0);
+				}else{
+					controller_download();
+				}
+			}else{
+				DialogUtil.messageAlert(this, "Not Connected Internet", "Connected Internet Please", 0);
+			}
+		}
+		
+	}
+	
+	public void controller_download(){
+		Synchronize_Gold synchronize_Gold = new Synchronize_Gold(this);
+		synchronize_Gold.synchronize();
+		Synchronize_Currency synchronize_Currency = new Synchronize_Currency(this);
+		synchronize_Currency.synchronize();
 	}
 
 	@Override
@@ -131,48 +138,4 @@ public class MenuActivity extends Activity {
 		}
 	}
 	
-	public void saveSession(){
-		itemSession = new ItemSession(getApplicationContext());
-		itemSession.clearSession();
-		
-		/* Default */
-		String[] name_default = {
-				"Default Currency","Default Code","Default Languague"
-		};
-		
-		String[] value_default = {
-				"Việt Nam","VND","Vietnamese"
-		};
-		
-		for (int i = 0; i < name_default.length; i++) {
-			itemSession.createSessionSetting(name_default[i],value_default[i]);
-		}
-		
-		/* Get Database */
-		db = new SQLite(getApplicationContext());
-		List<ItemSetting> list_setting = db.get_all_setting();
-		
-		if(list_setting.size() != 0){
-			for (int i = 0; i < list_setting.size(); i++) {
-				itemSession.createSessionSetting(list_setting.get(i).getName(),list_setting.get(i).getValue());
-			}
-			
-			String code_lang;
-			if(itemSession.getLanguague() != null){
-				if(itemSession.getLanguague().matches("Vietnamese")){
-		    		code_lang = "vi_VN";
-		    	}else{
-		    		code_lang = "en_US";
-		    	}
-		    	Locale locale = new Locale(code_lang);
-		    	Locale.setDefault(locale);
-		    	Configuration config = new Configuration();
-		    	config.locale = locale;
-		    	Context context = getApplicationContext();
-		    	context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
-			}
-		}
-		
-	}
-
 }

@@ -8,10 +8,11 @@ import vn.luis.goldsmine.drawer.NavDrawerActivityConfiguration;
 import vn.luis.goldsmine.drawer.NavDrawerItem;
 import vn.luis.goldsmine.drawer.NavMenuItem;
 import vn.luis.goldsmine.drawer.NavMenuSection;
-import vn.luis.goldsmine.function.Function;
 import vn.luis.goldsmine.golduser.ChartGoldUserFragment;
 import vn.luis.goldsmine.golduser.ListGoldUserFragment;
 import vn.luis.goldsmine.golduser.StatisticsGoldUserFragment;
+import vn.luis.goldsmine.util.DialogUtil;
+import vn.luis.goldsmine.util.Function;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -36,6 +37,8 @@ public class MainActivity extends AbstractNavDrawerActivity {
         FragmentTransaction fragmentsTransaction = getSupportFragmentManager().beginTransaction();
         fragments = getResources().getStringArray(R.array.menu_fragment);
 		fragmentsTransaction.replace(R.id.main,Fragment.instantiate(MainActivity.this, fragments[position]));
+		fragmentsTransaction.addToBackStack(null);
+		fragmentsTransaction.commit();
     }
 
 	@Override
@@ -44,12 +47,12 @@ public class MainActivity extends AbstractNavDrawerActivity {
         NavDrawerItem[] menu = new NavDrawerItem[] {
         	/* Gold */
             NavMenuSection.create( 100, getResources().getString(R.string.section_gold)),
-            NavMenuItem.create(101, getResources().getString(R.string.list_gold), "statistics_gold", false, this),
+            NavMenuItem.create(101, getResources().getString(R.string.list_gold), "gold", false, this),
             NavMenuItem.create(102, getResources().getString(R.string.statistics_gold), "statistics_gold", false, this),
             NavMenuItem.create(103, getResources().getString(R.string.chart_gold), "chart_gold", false, this),
             
-            /* Dash board */
-            NavMenuSection.create( 200, getResources().getString(R.string.section_dashboard)),
+            /* Money */
+            NavMenuSection.create(200, getResources().getString(R.string.section_dashboard)),
             NavMenuItem.create(201, getResources().getString(R.string.update_gold), "synchronize_gold", false, this),
             NavMenuItem.create(202, getResources().getString(R.string.update_currency), "synchronize_money", false, this),
             
@@ -88,7 +91,7 @@ public class MainActivity extends AbstractNavDrawerActivity {
         case 201:
             break;
         case 202:
-        	break;
+            break;
         case 901:
             getSupportFragmentManager().beginTransaction().replace(R.id.main, new SettingFragment()).commit();
             break;
@@ -96,13 +99,13 @@ public class MainActivity extends AbstractNavDrawerActivity {
         	getSupportFragmentManager().beginTransaction().replace(R.id.main, new InformationFragment()).commit();
         	break;
         case 903:
-        	Function.confirmationAlert(this, getResources().getString(R.string.title_exit), getResources().getString(R.string.message_exit), new DialogInterface.OnClickListener() {
+        	DialogUtil.confirmationAlert(this, getResources().getString(R.string.exit), getResources().getString(R.string.message_exit), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     // do something important, user confirmed the alert
                 	finish();
                 }
-            });
+            }, R.drawable.log_out);
 	    	break;
         }
     }
