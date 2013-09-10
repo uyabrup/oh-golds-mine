@@ -12,18 +12,13 @@ import vn.luis.goldsmine.function.Function;
 import vn.luis.goldsmine.golduser.ChartGoldUserFragment;
 import vn.luis.goldsmine.golduser.ListGoldUserFragment;
 import vn.luis.goldsmine.golduser.StatisticsGoldUserFragment;
-import vn.luis.goldsmine.money.ChartMoneyFragment;
-import vn.luis.goldsmine.money.ListMoneyFragment;
-import vn.luis.goldsmine.money.StatisticsMoneyFragment;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.content.DialogInterface.OnClickListener;
 
 @SuppressLint("Recycle")
 public class MainActivity extends AbstractNavDrawerActivity {
@@ -49,15 +44,14 @@ public class MainActivity extends AbstractNavDrawerActivity {
         NavDrawerItem[] menu = new NavDrawerItem[] {
         	/* Gold */
             NavMenuSection.create( 100, getResources().getString(R.string.section_gold)),
-            NavMenuItem.create(101, getResources().getString(R.string.list_gold), "list_gold", false, this),
+            NavMenuItem.create(101, getResources().getString(R.string.list_gold), "statistics_gold", false, this),
             NavMenuItem.create(102, getResources().getString(R.string.statistics_gold), "statistics_gold", false, this),
             NavMenuItem.create(103, getResources().getString(R.string.chart_gold), "chart_gold", false, this),
             
-            /* Money */
-            NavMenuSection.create(200, getResources().getString(R.string.section_money)),
-            NavMenuItem.create(201, getResources().getString(R.string.list_money), "ic_launcher", false, this),
-            NavMenuItem.create(202, getResources().getString(R.string.statistics_money), "statistics_money", false, this),
-            NavMenuItem.create(203, getResources().getString(R.string.chart_money), "chart_money", false, this),
+            /* Dash board */
+            NavMenuSection.create( 200, getResources().getString(R.string.section_dashboard)),
+            NavMenuItem.create(201, getResources().getString(R.string.update_gold), "synchronize_gold", false, this),
+            NavMenuItem.create(202, getResources().getString(R.string.update_currency), "synchronize_money", false, this),
             
             /* Configuration */
             NavMenuSection.create(900, getResources().getString(R.string.section_configuration)),
@@ -92,14 +86,9 @@ public class MainActivity extends AbstractNavDrawerActivity {
         	getSupportFragmentManager().beginTransaction().replace(R.id.main, new ChartGoldUserFragment()).commit();
         	break;
         case 201:
-            getSupportFragmentManager().beginTransaction().replace(R.id.main, new ListMoneyFragment()).commit();
             break;
         case 202:
-            getSupportFragmentManager().beginTransaction().replace(R.id.main, new StatisticsMoneyFragment()).commit();
-            break;
-        case 203:
-            getSupportFragmentManager().beginTransaction().replace(R.id.main, new ChartMoneyFragment()).commit();
-            break;
+        	break;
         case 901:
             getSupportFragmentManager().beginTransaction().replace(R.id.main, new SettingFragment()).commit();
             break;
@@ -107,29 +96,13 @@ public class MainActivity extends AbstractNavDrawerActivity {
         	getSupportFragmentManager().beginTransaction().replace(R.id.main, new InformationFragment()).commit();
         	break;
         case 903:
-	    	alert.setTitle(getResources().getString(R.string.exit));
-	    	alert.setIcon(getResources().getDrawable(R.drawable.log_out));
-	    	alert.setMessage(getResources().getString(R.string.message_exit));
-	    	alert.setCancelable(false);
-	    	alert.setPositiveButton(getResources().getString(R.string.yes), new OnClickListener() {
-				
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					// TODO Auto-generated method stub
-				    Intent intent = new Intent();
-				    setResult(Activity.RESULT_OK, intent);
-				    finish();
-				}
-			});
-	    	alert.setNegativeButton(getResources().getString(R.string.no), new OnClickListener() {
-				
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					// TODO Auto-generated method stub
-					dialog.cancel();
-				}
-			});
-	    	alert.create().show();
+        	Function.confirmationAlert(this, getResources().getString(R.string.title_exit), getResources().getString(R.string.message_exit), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    // do something important, user confirmed the alert
+                	finish();
+                }
+            });
 	    	break;
         }
     }
