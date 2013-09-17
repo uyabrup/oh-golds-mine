@@ -11,11 +11,16 @@
 	<string name="type_gold">Type Gold</string>    
     <string name="form_hint_price">Price</string>
     <string name="form_hint_date">Date</string>
+    <string name="title_currency">Currency</string>
+    <string name="title_languague">Languague</string>
+    <string name="languague_vietnamese">Vietnamese</string>
+    <string name="languague_english">English</string>
     
     <!-- Button -->
     <string name="button_cancel">Cancel</string>
     <string name="button_add">Add</string>
     <string name="button_calendar">Calendar</string>
+    <string name="button_save">Save</string>
     
     <!-- Description -->
     <string name="description_logo">logo</string>

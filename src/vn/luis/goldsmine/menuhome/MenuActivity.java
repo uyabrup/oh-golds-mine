@@ -90,7 +90,7 @@ public class MenuActivity extends Activity {
 			int check_internet = NetworkUtil.getConnectivityStatus(getApplicationContext());
 			if(check_internet != 0){
 				if(check_internet == 2){
-					DialogUtil.confirmationAlert(this, "Mobil Network", "AAA", new DialogInterface.OnClickListener() {
+					DialogUtil.confirmationAlert(this, "Mobile Network", "AAA", new DialogInterface.OnClickListener() {
 						
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
