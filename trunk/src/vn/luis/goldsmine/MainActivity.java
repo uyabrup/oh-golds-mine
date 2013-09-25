@@ -11,6 +11,7 @@ import vn.luis.goldsmine.drawer.NavMenuSection;
 import vn.luis.goldsmine.golduser.ChartGoldUserFragment;
 import vn.luis.goldsmine.golduser.ListGoldUserFragment;
 import vn.luis.goldsmine.golduser.StatisticsGoldUserFragment;
+import vn.luis.goldsmine.news.ListNewsFragment;
 import vn.luis.goldsmine.util.DialogUtil;
 import vn.luis.goldsmine.util.Function;
 import android.annotation.SuppressLint;
