@@ -47,6 +47,7 @@ public class MenuActivity extends Activity {
 			resources.getDrawable(R.drawable.chart_gold),
 			resources.getDrawable(R.drawable.information),
 			resources.getDrawable(R.drawable.setting),
+			resources.getDrawable(R.drawable.news),
 			resources.getDrawable(R.drawable.log_out)
 		};
 		

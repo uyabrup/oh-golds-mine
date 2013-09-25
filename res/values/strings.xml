@@ -71,6 +71,7 @@
 	<string name="update_currency">Synchronize Currency</string>
 	<string name="setting">Setting</string>
 	<string name="information">Information</string>
+	<string name="news">News</string>
 	<string name="exit">Exit</string>
 	
 	<!-- Menu Grid Home -->
@@ -81,6 +82,7 @@
 	    <item>@string/chart_gold</item>
 	    <item>@string/setting</item>
 	    <item>@string/information</item>
+	    <item>@string/news</item>
 	    <item>@string/exit</item>
 	</string-array>
 	
@@ -91,6 +93,7 @@
 	    <item>vn.luis.goldsmine.golduser.ChartGoldUserFragment</item> <!-- Chart Gold -->
 	    <item>vn.luis.goldsmine.configuration.SettingFragment</item> <!-- Setting -->
 	    <item>vn.luis.goldsmine.configuration.InformationFragment</item> <!-- Information -->
+	    <item>vn.luis.goldsmine.news.ListNewsFragment</item> <!-- News -->
 	</string-array>
 	
 	<!-- Sort List Gold User-->

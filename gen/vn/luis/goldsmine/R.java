@@ -15,7 +15,7 @@ public final class R {
         /**  Array Type Gold 
          */
         public static final int array_type_gold=0x7f070003;
-        /**  Information 
+        /**  News 
          */
         public static final int menu_fragment=0x7f070001;
         /**  Menu Grid Home 
@@ -61,23 +61,24 @@ public final class R {
         public static final int index_up=0x7f020011;
         public static final int information=0x7f020012;
         public static final int log_out=0x7f020013;
-        public static final int next=0x7f020014;
-        public static final int remove=0x7f020015;
-        public static final int save=0x7f020016;
-        public static final int search=0x7f020017;
-        public static final int setting=0x7f020018;
-        public static final int settings=0x7f020019;
-        public static final int statistics_gold=0x7f02001a;
-        public static final int statistics_money=0x7f02001b;
-        public static final int synchronize_gold=0x7f02001c;
-        public static final int synchronize_money=0x7f02001d;
-        public static final int transaction=0x7f02001e;
-        public static final int warning=0x7f02001f;
+        public static final int news=0x7f020014;
+        public static final int next=0x7f020015;
+        public static final int remove=0x7f020016;
+        public static final int save=0x7f020017;
+        public static final int search=0x7f020018;
+        public static final int setting=0x7f020019;
+        public static final int settings=0x7f02001a;
+        public static final int statistics_gold=0x7f02001b;
+        public static final int statistics_money=0x7f02001c;
+        public static final int synchronize_gold=0x7f02001d;
+        public static final int synchronize_money=0x7f02001e;
+        public static final int transaction=0x7f02001f;
+        public static final int warning=0x7f020020;
     }
     public static final class id {
         public static final int RelativeLayout1=0x7f0a0017;
         public static final int ScrollView01=0x7f0a001d;
-        public static final int action_settings=0x7f0a002e;
+        public static final int action_settings=0x7f0a0030;
         public static final int btt_add=0x7f0a0011;
         public static final int btt_calendar=0x7f0a0010;
         public static final int btt_cancel=0x7f0a0012;
@@ -88,6 +89,7 @@ public final class R {
         public static final int edit_id=0x7f0a0009;
         public static final int edit_price=0x7f0a000e;
         public static final int gridView_main=0x7f0a0003;
+        public static final int imageNews=0x7f0a0029;
         public static final int imgLogo=0x7f0a0006;
         public static final int item_image=0x7f0a0004;
         public static final int item_text=0x7f0a0005;
@@ -98,11 +100,11 @@ public final class R {
         public static final int navmenuitem_icon=0x7f0a0026;
         public static final int navmenuitem_label=0x7f0a0027;
         public static final int navmenusection_label=0x7f0a0028;
-        public static final int pull_to_refresh_header=0x7f0a0029;
-        public static final int pull_to_refresh_image=0x7f0a002b;
-        public static final int pull_to_refresh_progress=0x7f0a002a;
-        public static final int pull_to_refresh_text=0x7f0a002c;
-        public static final int pull_to_refresh_updated_at=0x7f0a002d;
+        public static final int pull_to_refresh_header=0x7f0a002b;
+        public static final int pull_to_refresh_image=0x7f0a002d;
+        public static final int pull_to_refresh_progress=0x7f0a002c;
+        public static final int pull_to_refresh_text=0x7f0a002e;
+        public static final int pull_to_refresh_updated_at=0x7f0a002f;
         public static final int radioLanguague=0x7f0a001f;
         public static final int radio_en=0x7f0a0021;
         public static final int radio_vi=0x7f0a0020;
@@ -114,6 +116,7 @@ public final class R {
         public static final int textView1=0x7f0a000a;
         public static final int textView2=0x7f0a000c;
         public static final int textView4=0x7f0a0007;
+        public static final int titleNews=0x7f0a002a;
         public static final int top_line=0x7f0a0024;
         public static final int txt_anumb=0x7f0a0019;
         public static final int txt_date=0x7f0a001c;
@@ -136,13 +139,15 @@ public final class R {
         public static final int fragment_list_gold_empty=0x7f030009;
         public static final int fragment_list_gold_row=0x7f03000a;
         public static final int fragment_list_money=0x7f03000b;
-        public static final int fragment_setting=0x7f03000c;
-        public static final int fragment_statistics_gold=0x7f03000d;
-        public static final int fragment_statistics_money=0x7f03000e;
-        public static final int load_more_footer=0x7f03000f;
-        public static final int navdrawer_item=0x7f030010;
-        public static final int navdrawer_section=0x7f030011;
-        public static final int pull_to_refresh_header=0x7f030012;
+        public static final int fragment_list_news=0x7f03000c;
+        public static final int fragment_setting=0x7f03000d;
+        public static final int fragment_statistics_gold=0x7f03000e;
+        public static final int fragment_statistics_money=0x7f03000f;
+        public static final int load_more_footer=0x7f030010;
+        public static final int navdrawer_item=0x7f030011;
+        public static final int navdrawer_section=0x7f030012;
+        public static final int news_row=0x7f030013;
+        public static final int pull_to_refresh_header=0x7f030014;
     }
     public static final class menu {
         public static final int main=0x7f090000;
@@ -170,7 +175,7 @@ public final class R {
          */
         public static final int description_logo=0x7f050015;
         public static final int description_save_history=0x7f050017;
-        public static final int exit=0x7f050037;
+        public static final int exit=0x7f050038;
         public static final int form_hint_date=0x7f05000c;
         public static final int form_hint_price=0x7f05000b;
         public static final int hello=0x7f050000;
@@ -190,6 +195,7 @@ public final class R {
          */
         public static final int message_exit=0x7f05001a;
         public static final int message_insert_success=0x7f050022;
+        public static final int news=0x7f050037;
         public static final int no=0x7f050027;
         public static final int ok=0x7f050025;
         /**  Navigation Draw 
