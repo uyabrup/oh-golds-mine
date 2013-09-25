@@ -20,6 +20,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 
 @SuppressLint("Recycle")
 public class MainActivity extends AbstractNavDrawerActivity {
@@ -33,12 +34,14 @@ public class MainActivity extends AbstractNavDrawerActivity {
         super.onCreate(savedInstanceState);
         alert = new AlertDialog.Builder(MainActivity.this);
         Intent intent = getIntent();
-        int position = intent.getIntExtra("position", 0);
-        FragmentTransaction fragmentsTransaction = getSupportFragmentManager().beginTransaction();
-        fragments = getResources().getStringArray(R.array.menu_fragment);
-		fragmentsTransaction.replace(R.id.main,Fragment.instantiate(MainActivity.this, fragments[position]));
-		fragmentsTransaction.addToBackStack(null);
-		fragmentsTransaction.commit();
+        int position = intent.getIntExtra("position", -1);
+        if(position >= 0){
+	        FragmentTransaction fragmentsTransaction = getSupportFragmentManager().beginTransaction();
+	        fragments = getResources().getStringArray(R.array.menu_fragment);
+			fragmentsTransaction.replace(R.id.main,Fragment.instantiate(MainActivity.this, fragments[position]),fragments[position]);
+			fragmentsTransaction.addToBackStack(null);
+			fragmentsTransaction.commit();
+        }
     }
 
 	@Override
@@ -78,25 +81,32 @@ public class MainActivity extends AbstractNavDrawerActivity {
 
 	@Override
     protected void onNavItemSelected(int id) {
+		Fragment myFragment = null;
+		String fragmentName = "";
         switch ((int)id) {
         case 101:
-            getSupportFragmentManager().beginTransaction().replace(R.id.main, new ListGoldUserFragment()).commit();
+        	myFragment = new ListGoldUserFragment();
+        	fragmentName = fragments[1];
             break;
         case 102:
-        	getSupportFragmentManager().beginTransaction().replace(R.id.main, new StatisticsGoldUserFragment()).commit();
+        	myFragment = new StatisticsGoldUserFragment();
+        	fragmentName = fragments[2];
         	break;
         case 103:
-        	getSupportFragmentManager().beginTransaction().replace(R.id.main, new ChartGoldUserFragment()).commit();
+        	myFragment = new ChartGoldUserFragment();
+        	fragmentName = fragments[3];
         	break;
         case 201:
             break;
         case 202:
             break;
         case 901:
-            getSupportFragmentManager().beginTransaction().replace(R.id.main, new SettingFragment()).commit();
+        	myFragment = new SettingFragment();
+        	fragmentName = fragments[4];
             break;
         case 902:
-        	getSupportFragmentManager().beginTransaction().replace(R.id.main, new InformationFragment()).commit();
+        	myFragment = new InformationFragment();
+        	fragmentName = fragments[5];
         	break;
         case 903:
         	DialogUtil.confirmationAlert(this, getResources().getString(R.string.exit), getResources().getString(R.string.message_exit), new DialogInterface.OnClickListener() {
@@ -107,6 +117,22 @@ public class MainActivity extends AbstractNavDrawerActivity {
                 }
             }, R.drawable.log_out);
 	    	break;
+        }
+        if(myFragment != null){
+        	Fragment currentFragment =(Fragment)getSupportFragmentManager().findFragmentByTag(fragmentName);
+        	if(currentFragment == null){
+        		FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        		fragmentTransaction.replace(R.id.main, myFragment, fragmentName);
+        		fragmentTransaction.addToBackStack(null);
+        		fragmentTransaction.commit();
+        	}else{
+	        	if(!currentFragment.isVisible()){
+	        		FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+	        		fragmentTransaction.replace(R.id.main, myFragment, fragmentName);
+	        		fragmentTransaction.addToBackStack(null);
+	        		fragmentTransaction.commit();
+	        	}
+        	}
         }
     }
 }
